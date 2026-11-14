@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incidencia Social vs. Política | Red de Juventudes FUSALMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.78);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -8px rgba(99, 102, 241, 0.35);
+        }
+        .animate-bounce-short {
+            animation: bounce 0.6s ease-in-out 2;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.08); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .badge-pop {
+            animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="text-slate-100 flex flex-col justify-between h-[100dvh] overflow-hidden px-3 sm:px-6 py-2 sm:py-3">
+
+    <!-- Header Institucional Compacto -->
+    <header class="max-w-4xl w-full mx-auto pb-2 border-b border-slate-700/60 shrink-0">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-2.5">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center font-black text-sm sm:text-base shadow-md shadow-indigo-500/30 flex-shrink-0 text-white">
+                    RJF
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-xs sm:text-base text-white leading-tight">
+                        Módulo 3: Derechos Humanos
+                    </h1>
+                    <p class="text-[10px] sm:text-xs text-slate-300">
+                        Incidencia Social • Incidencia Política • Gobernanza Juvenil
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Quick Reference Badges & Participant Tag -->
+            <div class="flex flex-wrap items-center gap-1.5 text-[10px] sm:text-xs">
+                <span id="header-user-badge" class="hidden px-2.5 py-0.5 sm:py-1 rounded-lg bg-slate-800/90 text-indigo-300 border border-indigo-500/30 font-semibold">
+                    👤 <span id="header-user-name">---</span>
+                </span>
+                <div class="hidden sm:flex items-center space-x-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">S = Social</span>
+                    <span class="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold">P = Política</span>
+                    <span class="px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 font-semibold">A = Ambas</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Game Container (Centrado y Ajustado al Alto de Pantalla) -->
+    <main class="max-w-3xl w-full mx-auto flex-1 flex flex-col justify-center min-h-0 py-1.5 sm:py-2">
+
+        <!-- Welcome & Registration Screen -->
+        <div id="screen-welcome" class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-center shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-20 -right-20 w-40 h-40 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="inline-flex p-2 sm:p-2.5 bg-indigo-500/10 rounded-xl mb-1.5 sm:mb-2 text-indigo-400 border border-indigo-500/20">
+                <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+            </div>
+            
+            <h2 class="text-lg sm:text-2xl font-extrabold text-white mb-1 tracking-tight">¿Social, Política o Ambas?</h2>
+            <p class="text-slate-300 text-xs sm:text-sm mb-3 max-w-xl mx-auto leading-snug">
+                Analizaremos 10 situaciones reales en orden aleatorio. Clasifica cada caso e impulsa el debate en equipo para ganar tu insignia.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3.5 text-left">
+                <div class="p-2.5 rounded-xl bg-slate-800/60 border border-slate-700">
+                    <div class="text-emerald-400 font-bold text-xs mb-0.5">Social (S)</div>
+                    <div class="text-[11px] text-slate-400 leading-tight">Sensibilización, acción directa comunitaria y cambio cultural sin leyes.</div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-800/60 border border-slate-700">
+                    <div class="text-amber-400 font-bold text-xs mb-0.5">Política (P)</div>
+                    <div class="text-[11px] text-slate-400 leading-tight">Dirigida a instituciones públicas, leyes, presupuestos u ordenanzas.</div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-800/60 border border-slate-700">
+                    <div class="text-purple-400 font-bold text-xs mb-0.5">Ambas (A)</div>
+                    <div class="text-[11px] text-slate-400 leading-tight">Combina movilización comunitaria con exigencia legal o gubernamental.</div>
+                </div>
+            </div>
+
+            <!-- Form Registro de Nombre -->
+            <form id="start-form" class="max-w-md mx-auto">
+                <div class="mb-2.5 text-left">
+                    <label for="participant-name" class="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-indigo-300 mb-1">
+                        Ingresa tu Nombre y Apellido para participar:
+                    </label>
+                    <input type="text" id="participant-name" required placeholder="Ej: Sofía Martínez" autocomplete="off"
+                        class="w-full px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-600 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/30 transition-all text-xs sm:text-sm">
+                </div>
+                <button type="submit" class="w-full px-6 py-2.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold rounded-xl shadow-lg shadow-purple-500/25 transition-all duration-200 transform hover:scale-[1.01] active:scale-95 text-xs sm:text-sm">
+                    ¡Comenzar Desafío! 🚀
+                </button>
+            </form>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="screen-game" class="hidden flex flex-col justify-center">
+            <!-- Progress & Stats Header -->
+            <div class="flex items-center justify-between mb-1.5 px-1">
+                <div class="text-xs font-semibold text-slate-400">
+                    Situación <span id="current-question-num" class="text-white font-bold">1</span> de <span id="total-questions-num">10</span>
+                </div>
+                <div class="flex items-center space-x-1.5 bg-slate-800/80 px-2.5 py-0.5 rounded-full border border-slate-700">
+                    <span class="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Puntos:</span>
+                    <span id="score-display" class="font-extrabold text-indigo-400 text-xs sm:text-sm">0</span>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-800 h-1.5 rounded-full mb-2.5 overflow-hidden border border-slate-700/50">
+                <div id="progress-bar" class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full w-0 transition-all duration-300"></div>
+            </div>
+
+            <!-- Main Question Card -->
+            <div class="glass-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 shadow-2xl relative">
+                <!-- Situation Tag -->
+                <div class="inline-block px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-400 font-semibold text-[10px] tracking-wider uppercase mb-1.5 border border-indigo-500/20">
+                    Caso práctico
+                </div>
+
+                <!-- Situation Text -->
+                <h3 id="question-text" class="text-sm sm:text-lg font-bold text-white mb-3 leading-snug">
+                    Cargando situación...
+                </h3>
+
+                <!-- Options Grid -->
+                <div id="options-container" class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
+                    <button onclick="selectOption('S')" id="opt-S" class="glass-card-hover p-2.5 sm:p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-left flex sm:flex-col items-center sm:items-start justify-between group focus:outline-none">
+                        <div class="flex items-center sm:justify-between sm:w-full gap-2 sm:mb-1">
+                            <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs sm:text-sm group-hover:bg-emerald-500 group-hover:text-white transition-colors">S</span>
+                            <span class="hidden sm:inline text-[10px] text-slate-400 font-semibold">Opción 1</span>
+                        </div>
+                        <span class="font-bold text-white text-xs sm:text-sm group-hover:text-emerald-300">Incidencia Social</span>
+                    </button>
+
+                    <button onclick="selectOption('P')" id="opt-P" class="glass-card-hover p-2.5 sm:p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-left flex sm:flex-col items-center sm:items-start justify-between group focus:outline-none">
+                        <div class="flex items-center sm:justify-between sm:w-full gap-2 sm:mb-1">
+                            <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs sm:text-sm group-hover:bg-amber-500 group-hover:text-white transition-colors">P</span>
+                            <span class="hidden sm:inline text-[10px] text-slate-400 font-semibold">Opción 2</span>
+                        </div>
+                        <span class="font-bold text-white text-xs sm:text-sm group-hover:text-amber-300">Incidencia Política</span>
+                    </button>
+
+                    <button onclick="selectOption('A')" id="opt-A" class="glass-card-hover p-2.5 sm:p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-left flex sm:flex-col items-center sm:items-start justify-between group focus:outline-none">
+                        <div class="flex items-center sm:justify-between sm:w-full gap-2 sm:mb-1">
+                            <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs sm:text-sm group-hover:bg-purple-500 group-hover:text-white transition-colors">A</span>
+                            <span class="hidden sm:inline text-[10px] text-slate-400 font-semibold">Opción 3</span>
+                        </div>
+                        <span class="font-bold text-white text-xs sm:text-sm group-hover:text-purple-300">Ambas (Social y Pol.)</span>
+                    </button>
+                </div>
+
+                <!-- Feedback Area (Initially Hidden) -->
+                <div id="feedback-box" class="hidden mt-3 pt-2.5 border-t border-slate-700/80">
+                    
+                    <!-- Debate Prompt Callout -->
+                    <div class="mb-2 p-2 rounded-xl bg-gradient-to-r from-amber-500/15 via-orange-500/15 to-amber-500/15 border border-amber-500/30 flex items-center space-x-2 text-amber-200">
+                        <span class="text-base sm:text-lg flex-shrink-0 animate-bounce-short">🎙️</span>
+                        <div>
+                            <h4 class="font-bold text-amber-300 text-[11px] sm:text-xs">¡Momento de Debate Facilitado!</h4>
+                            <p class="text-[10px] sm:text-[11px] text-amber-100/90 leading-tight">
+                                Pide a un participante (o reflexiona): <strong>¿Por qué eligió esta respuesta?</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Result Header -->
+                    <div id="result-badge" class="flex items-center space-x-1.5 font-bold text-xs sm:text-sm mb-1.5">
+                        <!-- Result Icon & Text inserted by JS -->
+                    </div>
+
+                    <!-- Explanation -->
+                    <p id="explanation-text" class="text-slate-300 text-[11px] sm:text-xs leading-snug bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 mb-2.5">
+                        Explicación teórica...
+                    </p>
+
+                    <!-- Next Button -->
+                    <div class="flex justify-end">
+                        <button onclick="nextQuestion()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/30 transition-all flex items-center space-x-1.5 text-xs">
+                            <span>Siguiente Situación</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Results Screen con Insignias -->
+        <div id="screen-results" class="hidden glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-center shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-20 -left-20 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[10px] font-bold uppercase tracking-wider mb-1.5">
+                Reconocimiento de Participación
+            </span>
+            <h2 class="text-lg sm:text-2xl font-extrabold text-white mb-0.5">
+                ¡Excelente trabajo, <span id="result-user-name" class="text-indigo-400">Participante</span>!
+            </h2>
+            <p class="text-slate-400 mb-2 text-xs">
+                Has completado el análisis de casos del Módulo 3: Derechos Humanos.
+            </p>
+
+            <!-- Contenedor Dinámico de Insignia -->
+            <div id="badge-display" class="my-2 flex flex-col items-center justify-center">
+                <!-- Generado dinámicamente por JS -->
+            </div>
+
+            <div class="inline-block p-3 rounded-2xl bg-slate-800/80 border border-slate-700 mb-2.5 w-full max-w-sm">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Puntuación Obtenida</div>
+                <div class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 my-0.5">
+                    <span id="final-score">0</span> / <span id="final-total">10</span>
+                </div>
+                <div id="score-feedback" class="text-[11px] sm:text-xs font-medium text-slate-300 mt-0.5 leading-snug">
+                    ¡Excelente trabajo diferenciando los tipos de incidencia!
+                </div>
+            </div>
+
+            <p class="text-[10px] sm:text-xs text-indigo-300/90 mb-3">
+                📸 ¡Toma una captura de tu insignia y compártela en nuestro grupo de WhatsApp!
+            </p>
+
+            <div class="flex justify-center">
+                <button onclick="restartGame()" class="px-5 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/25 transition-all text-xs sm:text-sm">
+                    🔄 Volver a Intentar (Orden Aleatorio)
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Institucional Compacto -->
+    <footer class="max-w-4xl w-full mx-auto text-center pt-2 border-t border-slate-800/80 shrink-0">
+        <div class="flex flex-wrap items-center justify-center gap-2">
+            <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                Red de Juventudes FUSALMO
+            </span>
+            <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                Escuela de Líderes
+            </span>
+        </div>
+    </footer>
+
+    <!-- Game Logic JavaScript -->
+    <script>
+        const baseQuestionsData = [
+            {
+                situation: "Organizar una campaña en Instagram para concientizar sobre el acoso callejero.",
+                answer: "S",
+                answerLabel: "Incidencia Social (S)",
+                explanation: "Es Incidencia Social porque busca transformar comportamientos y generar conciencia en la ciudadanía a través de medios digitales, sin buscar directamente un cambio legal."
+            },
+            {
+                situation: "Presentar una propuesta a la alcaldía para crear un programa de empleo juvenil.",
+                answer: "P",
+                answerLabel: "Incidencia Política (P)",
+                explanation: "Es Incidencia Política porque se interactúa directamente con una autoridad de gobierno (la alcaldía) para influir en las decisiones públicas y programas oficiales."
+            },
+            {
+                situation: "Organizar una campaña comunitaria y posteriormente solicitar una ordenanza municipal.",
+                answer: "A",
+                answerLabel: "Ambas / Incidencia Social y Política (A)",
+                explanation: "Combina ambas: primero articula y moviliza a la comunidad (Incidencia Social) y luego formaliza la petición para cambiar las reglas locales mediante una ordenanza (Incidencia Política)."
+            },
+            {
+                situation: "Solicitar que se incremente el presupuesto destinado a actividades deportivas juveniles.",
+                answer: "P",
+                answerLabel: "Incidencia Política (P)",
+                explanation: "Es Incidencia Política porque el presupuesto público lo administran los tomadores de decisiones gubernamentales; pedir una reasignación influye en el uso de fondos del Estado."
+            },
+            {
+                situation: "Organizar una jornada voluntaria de limpieza de una quebrada o parque comunitario.",
+                answer: "S",
+                answerLabel: "Incidencia Social (S)",
+                explanation: "Es Incidencia Social directa ya que la propia comunidad se organiza y resuelve una problemática local mediante acción colectiva, sin esperar una ley o decreto estatal."
+            },
+            {
+                situation: "Participar en una consulta pública para proponer modificaciones a una ley o normativa.",
+                answer: "P",
+                answerLabel: "Incidencia Política (P)",
+                explanation: "Es Incidencia Política porque utiliza un mecanismo oficial de participación ciudadana para incidir en la redacción o reforma de un marco normativo existente."
+            },
+            {
+                situation: "Crear un huerto urbano con vecinos y gestionar ante el concejo municipal un espacio permanente para replicarlo.",
+                answer: "A",
+                answerLabel: "Ambas / Incidencia Social y Política (A)",
+                explanation: "Inicia con acción comunitaria y educación alimentaria (Social) y escala hacia la institucionalización solicitando aval y terrenos al gobierno municipal (Política)."
+            },
+            {
+                situation: "Realizar un festival artístico y murales en el barrio para promover la cultura de paz.",
+                answer: "S",
+                answerLabel: "Incidencia Social (S)",
+                explanation: "Es Incidencia Social porque utiliza el arte y la cultura para transformar la convivencia comunitaria y sensibilizar a los habitantes desde el territorio."
+            },
+            {
+                situation: "Solicitar acceso a la información pública para auditar cómo se gastó el fondo municipal de becas.",
+                answer: "P",
+                answerLabel: "Incidencia Política (P)",
+                explanation: "Es Incidencia Política (vigilancia ciudadana o contraloría social) porque fiscaliza directamente la transparencia y rendición de cuentas de las instituciones del Estado."
+            },
+            {
+                situation: "Recolectar firmas en escuelas sobre salud mental juvenil y entregarlas a diputados para reformar la Ley de Juventud.",
+                answer: "A",
+                answerLabel: "Ambas / Incidencia Social y Política (A)",
+                explanation: "Une la movilización y sensibilización estudiantil en el territorio (Social) con el cabildeo legislativo para modificar una ley nacional (Política)."
+            }
+        ];
+
+        let shuffledQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+        let participantName = '';
+
+        const screenWelcome = document.getElementById('screen-welcome');
+        const screenGame = document.getElementById('screen-game');
+        const screenResults = document.getElementById('screen-results');
+        
+        const questionText = document.getElementById('question-text');
+        const currentQuestionNum = document.getElementById('current-question-num');
+        const totalQuestionsNum = document.getElementById('total-questions-num');
+        const scoreDisplay = document.getElementById('score-display');
+        const progressBar = document.getElementById('progress-bar');
+        
+        const feedbackBox = document.getElementById('feedback-box');
+        const resultBadge = document.getElementById('result-badge');
+        const explanationText = document.getElementById('explanation-text');
+
+        // Algoritmo Fisher-Yates para mezclar aleatoriamente
+        function shuffleArray(array) {
+            const copy = [...array];
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
+
+        document.getElementById('start-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const inputVal = document.getElementById('participant-name').value.trim();
+            if (inputVal) {
+                participantName = inputVal;
+                document.getElementById('header-user-name').textContent = participantName;
+                document.getElementById('header-user-badge').classList.remove('hidden');
+                startGame();
+            }
+        });
+
+        function startGame() {
+            shuffledQuestions = shuffleArray(baseQuestionsData);
+            currentQuestionIndex = 0;
+            score = 0;
+            answered = false;
+
+            totalQuestionsNum.textContent = shuffledQuestions.length;
+            scoreDisplay.textContent = score;
+
+            screenWelcome.classList.add('hidden');
+            screenResults.classList.add('hidden');
+            screenGame.classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        function restartGame() {
+            startGame();
+        }
+
+        function loadQuestion() {
+            answered = false;
+            const q = shuffledQuestions[currentQuestionIndex];
+
+            currentQuestionNum.textContent = currentQuestionIndex + 1;
+            const progressPercent = ((currentQuestionIndex) / shuffledQuestions.length) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+
+            questionText.textContent = q.situation;
+
+            ['S', 'P', 'A'].forEach(opt => {
+                const btn = document.getElementById(`opt-${opt}`);
+                btn.className = "glass-card-hover p-2.5 sm:p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-left flex sm:flex-col items-center sm:items-start justify-between group focus:outline-none cursor-pointer";
+                btn.disabled = false;
+            });
+
+            feedbackBox.classList.add('hidden');
+        }
+
+        function selectOption(selectedOpt) {
+            if (answered) return;
+            answered = true;
+
+            const q = shuffledQuestions[currentQuestionIndex];
+            const isCorrect = selectedOpt === q.answer;
+
+            if (isCorrect) {
+                score++;
+                scoreDisplay.textContent = score;
+            }
+
+            ['S', 'P', 'A'].forEach(opt => {
+                const btn = document.getElementById(`opt-${opt}`);
+                btn.disabled = true;
+                btn.classList.remove('glass-card-hover');
+
+                if (opt === q.answer) {
+                    btn.className = "p-2.5 sm:p-3 rounded-xl bg-emerald-950/80 border-2 border-emerald-500 text-left flex sm:flex-col items-center sm:items-start justify-between shadow-lg shadow-emerald-500/10 opacity-100";
+                } else if (opt === selectedOpt && !isCorrect) {
+                    btn.className = "p-2.5 sm:p-3 rounded-xl bg-rose-950/80 border-2 border-rose-500 text-left flex sm:flex-col items-center sm:items-start justify-between opacity-100";
+                } else {
+                    btn.className = "p-2.5 sm:p-3 rounded-xl bg-slate-900/40 border border-slate-800 text-left flex sm:flex-col items-center sm:items-start justify-between opacity-40";
+                }
+            });
+
+            if (isCorrect) {
+                resultBadge.className = "flex items-center space-x-1.5 font-bold text-xs sm:text-sm mb-1.5 text-emerald-400";
+                resultBadge.innerHTML = `
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                    <span>¡Respuesta Correcta! (${q.answerLabel})</span>
+                `;
+            } else {
+                resultBadge.className = "flex items-center space-x-1.5 font-bold text-xs sm:text-sm mb-1.5 text-rose-400";
+                resultBadge.innerHTML = `
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    <span>Incorrecto. Era: ${q.answerLabel}</span>
+                `;
+            }
+
+            explanationText.textContent = q.explanation;
+            feedbackBox.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < shuffledQuestions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            screenGame.classList.add('hidden');
+            screenResults.classList.remove('hidden');
+
+            document.getElementById('result-user-name').textContent = participantName;
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('final-total').textContent = shuffledQuestions.length;
+
+            const badgeDisplay = document.getElementById('badge-display');
+            const scoreFeedback = document.getElementById('score-feedback');
+
+            let badgeIcon = '';
+            let badgeTitle = '';
+            let badgeGradient = '';
+            let badgeBorder = '';
+
+            if (score >= 8) {
+                badgeIcon = '🥇';
+                badgeTitle = 'Insignia de Oro: Estratega de Incidencia';
+                badgeGradient = 'from-yellow-300 via-amber-400 to-yellow-600';
+                badgeBorder = 'border-amber-300 shadow-amber-500/30';
+                scoreFeedback.textContent = '¡Dominio sobresaliente! Diferencias con precisión la acción comunitaria de la incidencia institucional.';
+            } else if (score >= 5) {
+                badgeIcon = '🥈';
+                badgeTitle = 'Insignia de Plata: Agente de Cambio';
+                badgeGradient = 'from-slate-200 via-slate-300 to-slate-500';
+                badgeBorder = 'border-slate-300 shadow-slate-400/20';
+                scoreFeedback.textContent = '¡Muy buen trabajo! Tienes una base sólida para articular propuestas sociales y políticas.';
+            } else {
+                badgeIcon = '🥉';
+                badgeTitle = 'Insignia de Bronce: Líder en Formación';
+                badgeGradient = 'from-orange-300 via-amber-600 to-orange-800';
+                badgeBorder = 'border-orange-400 shadow-orange-500/20';
+                scoreFeedback.textContent = '¡Buen inicio! El debate grupal y la práctica comunitaria fortalecerán tu capacidad de incidencia.';
+            }
+
+            badgeDisplay.innerHTML = `
+                <div class="badge-pop w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br ${badgeGradient} border-4 ${badgeBorder} shadow-xl flex items-center justify-center text-2xl sm:text-3xl mb-1.5">
+                    ${badgeIcon}
+                </div>
+                <div class="text-xs sm:text-sm font-extrabold text-transparent bg-clip-text bg-gradient-to-r ${badgeGradient} uppercase tracking-wide">
+                    ${badgeTitle}
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
